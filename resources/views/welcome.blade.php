@@ -10,24 +10,26 @@
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     </link>
-    <link href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/unicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     </link>
     <!-- Styles -->
     <style>
         /* Please ❤ this if you like it! */
 
 
-        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700;900&display=swap');
+        @font-face {
+            font-family: "MyWebFont";
+            src: url("/fonts/font.woff2") format("woff2");
+        }
 
         :root {
             font-size: 20px;
-            --dark-blue: #1f2029;
+            --dark-blue: black;
             --white-gr: #c4c3ca;
             --yellow: #ffeba7;
             --yellow-2: #f8ab37;
         }
 
-       
         body {
             color: var(--white-gr);
             background: var(--dark-blue);
@@ -35,7 +37,7 @@
         }
 
         h1 {
-            font-family: 'Lato', sans-serif;
+            font-family: 'MyWebFont', sans-serif;
             font-weight: 700;
             color: var(--white-gr);
             font-size: 36px;
@@ -143,7 +145,7 @@
         }
 
         .checkbox-ticket+label .duration {
-            font-family: 'Lato', sans-serif;
+            font-family: 'MyWebFont', sans-serif;
             font-weight: 700;
             font-size: 18px;
             line-height: 1.2;
@@ -154,7 +156,7 @@
         }
 
         .checkbox-ticket+label .price {
-            font-family: 'Lato', sans-serif;
+            font-family: 'MyWebFont', sans-serif;
             font-weight: 900;
             font-size: 40px;
             line-height: 1;
@@ -180,7 +182,7 @@
         }
 
         .checkbox-ticket+label .time {
-            font-family: 'Lato', sans-serif;
+            font-family: 'MyWebFont', sans-serif;
             font-weight: 700;
             font-size: 15px;
             line-height: 1;
@@ -299,7 +301,7 @@
             border-radius: 4px;
             height: 48px;
             font-size: 16px;
-            font-family: 'Lato', sans-serif;
+            font-family: 'MyWebFont', sans-serif;
             font-weight: 700;
             transition: all 200ms linear;
             padding: 0 35px;
@@ -342,20 +344,29 @@
             pointer-events: auto;
             opacity: 1;
         }
+
+        .topcorner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 100;
+
+        }
     </style>
 </head>
 
 <body>
 
-    <a href="https://front.codes/" class="logo hover-target" target="_blank">
-        <img src="https://i.imgur.com/nPIBnnu.png" alt="">
+    <a href="https://www.instagram.com/apex.cologne/" target="_blank">
+        <img src="https://i.imgur.com/nPIBnnu.png" class="topcorner" width="125" height="125"></img>
+
     </a>
 
     <div class="section">
         <div class="container pt-5">
             <div class="row justify-content-center">
                 <div class="col-12 text-center">
-                    <h1 class="pb-4">Choose <i class='uil uil-bus color-yellow'></i> ticket</h1>
+                    <h1 class="pb-4">CHOOSE <i class='uil uil-ticket color-yellow'></i> TICKET</h1>
                     <div class="section">
                         <input class="checkbox-ticket" type="radio" name="ticket" id="ticket-1">
                         <label for="ticket-1">
@@ -381,10 +392,9 @@
                                 </span>
                             </span>
                             <span class="duration">
-                                30 min
-                            </span>
+                                Early Bird </span>
                             <span class="price mt-2 pb-4 mb-3">
-                                <sup>$</sup>2.95
+                                15.99<sup>€</sup>
                             </span>
                             <span class="section dots">
                                 <span></span>
@@ -408,8 +418,8 @@
                             <span class="section pt-4">
                                 <i class='uil uil-clock-two mt-3'></i>
                             </span>
-                            <span class="time mt-2">
-                                2:00 pm - 2:30 pm
+                            <span class="time mt-2" id="demo">
+
                             </span>
                             <span class="bottom-dots">
                                 <span class="section dots">
@@ -458,10 +468,10 @@
                                 </span>
                             </span>
                             <span class="duration">
-                                60 min
+                                Regular
                             </span>
                             <span class="price mt-2 pb-4 mb-3">
-                                <sup>$</sup>4.95
+                                17.99<sup>€</sup>
                             </span>
                             <span class="section dots">
                                 <span></span>
@@ -485,8 +495,7 @@
                             <span class="section pt-4">
                                 <i class='uil uil-clock-two mt-3'></i>
                             </span>
-                            <span class="time mt-2">
-                                2:00 pm - 3:00 pm
+                            <span class="time mt-2" id="demo2">
                             </span>
                             <span class="bottom-dots">
                                 <span class="section dots">
@@ -535,10 +544,10 @@
                                 </span>
                             </span>
                             <span class="duration">
-                                90 min
+                                Abendkasse
                             </span>
                             <span class="price mt-2 pb-4 mb-3">
-                                <sup>$</sup>6.95
+                                20<sup>€</sup>
                             </span>
                             <span class="section dots">
                                 <span></span>
@@ -563,8 +572,7 @@
                                 <i class='uil uil-clock-two mt-3'></i>
                             </span>
                             <span class="time mt-2">
-                                2:00 pm - 3:30 pm
-                            </span>
+                                Sa, 04.12.21 23:00 </span>
                             <span class="bottom-dots">
                                 <span class="section dots">
                                     <span></span>
@@ -588,7 +596,7 @@
                             </span>
                         </label>
                         <div class="w-100"></div>
-                        <a href="#" class="btn mt-4 mb-5"><i class="uil uil-ticket size-22 mr-2"></i>Buy Ticket</a>
+                        <a href="#" class="btn mt-4 mb-5"><i class="uil uil-euro-circle size-22 mr-2"></i>Buy Ticket</a>
                     </div>
                 </div>
             </div>
@@ -599,3 +607,34 @@
 
 </html>
 <script src="{{ mix('/js/app.js') }}"></script>
+<script>
+    var countDownDate = new Date("November 31, 2021 23:59:00").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="demo"
+        document.getElementById("demo").innerHTML =
+            days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        document.getElementById("demo2").innerHTML =
+            (days + 4) + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        // If the count down is finished, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+</script>
