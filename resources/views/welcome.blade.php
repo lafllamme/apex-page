@@ -40,7 +40,7 @@
             font-family: 'MyWebFont', sans-serif;
             font-weight: 700;
             color: var(--white-gr);
-            font-size: 36px;
+            font-size: 25px;
         }
 
         .color-yellow {
@@ -358,7 +358,7 @@
 <body>
 
     <a href="https://www.instagram.com/apex.cologne/" target="_blank">
-        <img src="https://i.imgur.com/nPIBnnu.png" class="topcorner" width="125" height="125"></img>
+        <img src="https://i.imgur.com/nPIBnnu.png" class="topcorner" width="90" height="90"></img>
 
     </a>
 
