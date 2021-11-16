@@ -355,14 +355,15 @@
 
         #mydiv {
             top: 0%;
-            left: 51%;
-            width: 30em;
-            height: 10em;
+            left: 52%;
+            width: 25em;
+            height: 14em;
             margin-top: -10em;
             /*set to a negative number 1/2 of your height*/
             margin-left: -13em;
             /*set to a negative number 1/2 of your width*/
             position: relative;
+            z-index: -100;
         }
 
         .responsive {
@@ -372,19 +373,23 @@
         }
     </style>
 </head>
+<br>
 
 <body>
-    <a href="https://www.instagram.com/apex.cologne/" target="_blank">
+    <div onclick="window.location='https://www.instagram.com/apex.cologne'">
         <div id="mydiv">
-            <img src=" https://i.imgur.com/IFxxU4v.png" class="responsive" width="500" height="500" alt="">
-        </div>
-    </a>
+        <img src=" https://i.imgur.com/IFxxU4v.png" class="responsive" width="500" height="500" alt="">
+    </div>
+    </div>
+
 
     <div class="section">
         <div class="container pt-5">
             <div class="row justify-content-center">
                 <div class="col-12 text-center">
-                    <!-- <h2 class="pb-4">CHOOSE <i class='uil uil-ticket color-yellow'></i> TICKET</h2> -->
+                    <br>
+                    
+                    <h2 class="pb-4">CHOOSE <i class='uil uil-ticket color-yellow'></i> TICKET</h2>
                     <br>
                     <br>
                     <div class="section">
