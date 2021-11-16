@@ -331,7 +331,7 @@
 
         .btn:hover {
             color: var(--yellow);
-            background-color: #000;
+            background-color: var(--yellow-2);
             box-shadow: 0 6px 20px 0 rgba(255, 235, 167, 0.25);
         }
 
