@@ -26,8 +26,8 @@
             font-size: 20px;
             --dark-blue: black;
             --white-gr: #c4c3ca;
-            --yellow: #ffeba7;
-            --yellow-2: #f8ab37;
+            --yellow: #8855dd;
+            --yellow-2: #20e7e7;
         }
 
         body {
@@ -354,34 +354,31 @@
         }
 
         #mydiv {
-            top: 3%;
-            left: 50%;
+            top: 0%;
+            left: 51%;
             width: 30em;
-            height: 18em;
-            margin-top: -12em;
-
+            height: 10em;
+            margin-top: -10em;
             /*set to a negative number 1/2 of your height*/
-            margin-left: -14em;
+            margin-left: -13em;
             /*set to a negative number 1/2 of your width*/
-            position: fixed;
+            position: relative;
         }
 
         .responsive {
-            width: 100%;
-            max-width: 550px;
-            height: auto;
+            max-width: 90%;
+            max-width: 100%;
+            margin: auto;
         }
     </style>
 </head>
 
 <body>
-
-    <!-- <a href="https://www.instagram.com/apex.cologne/" target="_blank">
-        <img src="https://i.imgur.com/xdskYQ4.png" class="topcorner" width="150" height="150"></img>
-    </a> -->
-    <div id="mydiv">
-        <img src="https://i.imgur.com/IFxxU4v.png" class="responsive" alt="">
-    </div>
+    <a href="https://www.instagram.com/apex.cologne/" target="_blank">
+        <div id="mydiv">
+            <img src=" https://i.imgur.com/IFxxU4v.png" class="responsive" width="500" height="500" alt="">
+        </div>
+    </a>
 
     <div class="section">
         <div class="container pt-5">
