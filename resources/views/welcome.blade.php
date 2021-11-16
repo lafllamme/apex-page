@@ -378,8 +378,8 @@
 <body>
     <div onclick="window.location='https://www.instagram.com/apex.cologne'">
         <div id="mydiv">
-        <img src=" https://i.imgur.com/IFxxU4v.png" class="responsive" width="500" height="500" alt="">
-    </div>
+            <img src=" https://i.imgur.com/IFxxU4v.png" class="responsive" width="500" height="500" alt="">
+        </div>
     </div>
 
 
@@ -388,65 +388,42 @@
             <div class="row justify-content-center">
                 <div class="col-12 text-center">
                     <br>
-                    
+
                     <h2 class="pb-4">CHOOSE <i class='uil uil-ticket color-yellow'></i> TICKET</h2>
                     <br>
                     <br>
-                    <div class="section">
-                        <input class="checkbox-ticket" type="radio" name="ticket" id="ticket-1">
-                        <label for="ticket-1">
-                            <span class="top-dots">
-                                <span class="section dots">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </span>
-                            </span>
-                            <span class="duration">
-                                Early Bird </span>
-                            <span class="price mt-2 pb-4 mb-3">
-                                15.99<sup>€</sup>
-                            </span>
-                            <span class="section dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </span>
-                            <span class="section pt-4">
-                                <i class='uil uil-clock-two mt-3'></i>
-                            </span>
-                            <span class="time mt-2" id="demo">
 
-                            </span>
-                            <span class="bottom-dots">
+                    <form action="{{ route('processTransaction') }}" id="form">
+                        @csrf
+                        <div class="section">
+                            <input class="checkbox-ticket" type="radio" value="ticket-1" name="ticket" id="ticket-1">
+                            <label for="ticket-1">
+                                <span class="top-dots">
+                                    <span class="section dots">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </span>
+                                </span>
+                                <span class="duration">
+                                    Early Bird </span>
+                                <span class="price mt-2 pb-4 mb-3">
+                                    15.99<sup>€</sup>
+                                </span>
                                 <span class="section dots">
                                     <span></span>
                                     <span></span>
@@ -466,12 +443,64 @@
                                     <span></span>
                                     <span></span>
                                 </span>
-                            </span>
-                        </label>
-                        <!--
-						--><input class="checkbox-ticket" type="radio" name="ticket" id="ticket-2">
-                        <label for="ticket-2">
-                            <span class="top-dots">
+                                <span class="section pt-4">
+                                    <i class='uil uil-clock-two mt-3'></i>
+                                </span>
+                                <span class="time mt-2" id="demo">
+
+                                </span>
+                                <span class="bottom-dots">
+                                    <span class="section dots">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </span>
+                                </span>
+                            </label>
+                            <!--
+						--><input class="checkbox-ticket" type="radio" value="ticket-2" name="ticket" id="ticket-2">
+                            <label for="ticket-2">
+                                <span class="top-dots">
+                                    <span class="section dots">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </span>
+                                </span>
+                                <span class="duration">
+                                    Regular
+                                </span>
+                                <span class="price mt-2 pb-4 mb-3">
+                                    17.99<sup>€</sup>
+                                </span>
                                 <span class="section dots">
                                     <span></span>
                                     <span></span>
@@ -491,38 +520,63 @@
                                     <span></span>
                                     <span></span>
                                 </span>
-                            </span>
-                            <span class="duration">
-                                Regular
-                            </span>
-                            <span class="price mt-2 pb-4 mb-3">
-                                17.99<sup>€</sup>
-                            </span>
-                            <span class="section dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </span>
-                            <span class="section pt-4">
-                                <i class='uil uil-clock-two mt-3'></i>
-                            </span>
-                            <span class="time mt-2" id="demo2">
-                            </span>
-                            <span class="bottom-dots">
+                                <span class="section pt-4">
+                                    <i class='uil uil-clock-two mt-3'></i>
+                                </span>
+                                <span class="time mt-2" id="demo2">
+                                </span>
+                                <span class="bottom-dots">
+                                    <span class="section dots">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </span>
+                                </span>
+                            </label>
+                            <!--
+						--><input class="checkbox-ticket" type="radio" value="ticket-3" name="ticket" id="ticket-3">
+                            <label for="ticket-3">
+                                <span class="top-dots">
+                                    <span class="section dots">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </span>
+                                </span>
+                                <span class="duration">
+                                    Abendkasse
+                                </span>
+                                <span class="price mt-2 pb-4 mb-3">
+                                    20<sup>€</sup>
+                                </span>
                                 <span class="section dots">
                                     <span></span>
                                     <span></span>
@@ -542,86 +596,44 @@
                                     <span></span>
                                     <span></span>
                                 </span>
-                            </span>
-                        </label>
-                        <!--
-						--><input class="checkbox-ticket" type="radio" name="ticket" id="ticket-3">
-                        <label for="ticket-3">
-                            <span class="top-dots">
-                                <span class="section dots">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
+                                <span class="section pt-4">
+                                    <i class='uil uil-clock-two mt-3'></i>
                                 </span>
-                            </span>
-                            <span class="duration">
-                                Abendkasse
-                            </span>
-                            <span class="price mt-2 pb-4 mb-3">
-                                20<sup>€</sup>
-                            </span>
-                            <span class="section dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </span>
-                            <span class="section pt-4">
-                                <i class='uil uil-clock-two mt-3'></i>
-                            </span>
-                            <span class="time mt-2" id="demo3"></span>
-                            <span class="bottom-dots">
-                                <span class="section dots">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
+                                <span class="time mt-2" id="demo3"></span>
+                                <span class="bottom-dots">
+                                    <span class="section dots">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </span>
                                 </span>
-                            </span>
-                        </label>
-                        <div class="w-100"></div>
-                        <a href="#" class="btn mt-4 mb-5"><i class="uil uil-euro-circle size-22 mr-2"></i>Buy Ticket</a>
-                    </div>
+                            </label>
+                            <div class="w-100"></div>
+                            <a href="#" class="btn mt-4 mb-5" id="submit-button"><i class="uil uil-euro-circle size-22 mr-2"></i>Buy Ticket</a>
+                        </div>
+                    </form>
+                    @if(\Session::has('error'))
+                    <div class="alert alert-danger">{{ \Session::get('error') }}</div>
+                    {{ \Session::forget('error') }}
+                    @endif
+                    @if(\Session::has('success'))
+                    <div class="alert alert-success">{{ \Session::get('success') }}</div>
+                    {{ \Session::forget('success') }}
+                    @endif
                 </div>
             </div>
         </div>
@@ -663,4 +675,8 @@
             document.getElementById("demo").innerHTML = "EXPIRED";
         }
     }, 1000);
+
+    document.getElementById("submit-button").onclick = function() {
+        document.getElementById("form").submit();
+    }
 </script>
