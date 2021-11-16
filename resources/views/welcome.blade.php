@@ -36,7 +36,7 @@
             overflow-x: hidden;
         }
 
-        h1 {
+        h2 {
             font-family: 'MyWebFont', sans-serif;
             font-weight: 700;
             color: var(--white-gr);
@@ -352,21 +352,44 @@
             z-index: 100;
 
         }
+
+        #mydiv {
+            top: 3%;
+            left: 50%;
+            width: 30em;
+            height: 18em;
+            margin-top: -12em;
+
+            /*set to a negative number 1/2 of your height*/
+            margin-left: -14em;
+            /*set to a negative number 1/2 of your width*/
+            position: fixed;
+        }
+
+        .responsive {
+            width: 100%;
+            max-width: 550px;
+            height: auto;
+        }
     </style>
 </head>
 
 <body>
 
-    <a href="https://www.instagram.com/apex.cologne/" target="_blank">
-        <img src="https://i.imgur.com/nPIBnnu.png" class="topcorner" width="90" height="90"></img>
-
-    </a>
+    <!-- <a href="https://www.instagram.com/apex.cologne/" target="_blank">
+        <img src="https://i.imgur.com/xdskYQ4.png" class="topcorner" width="150" height="150"></img>
+    </a> -->
+    <div id="mydiv">
+        <img src="https://i.imgur.com/IFxxU4v.png" class="responsive" alt="">
+    </div>
 
     <div class="section">
         <div class="container pt-5">
             <div class="row justify-content-center">
                 <div class="col-12 text-center">
-                    <h1 class="pb-4">CHOOSE <i class='uil uil-ticket color-yellow'></i> TICKET</h1>
+                    <!-- <h2 class="pb-4">CHOOSE <i class='uil uil-ticket color-yellow'></i> TICKET</h2> -->
+                    <br>
+                    <br>
                     <div class="section">
                         <input class="checkbox-ticket" type="radio" name="ticket" id="ticket-1">
                         <label for="ticket-1">
@@ -571,8 +594,7 @@
                             <span class="section pt-4">
                                 <i class='uil uil-clock-two mt-3'></i>
                             </span>
-                            <span class="time mt-2">
-                                Sa, 04.12.21 23:00 </span>
+                            <span class="time mt-2" id="demo3"></span>
                             <span class="bottom-dots">
                                 <span class="section dots">
                                     <span></span>
@@ -630,6 +652,8 @@
 
         document.getElementById("demo2").innerHTML =
             (days + 4) + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        document.getElementById("demo3").innerHTML = "Sa, 04.12.21";
 
         // If the count down is finished, write some text
         if (distance < 0) {
