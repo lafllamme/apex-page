@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
-
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Storage;
 
 class PayPalController extends Controller
 {
@@ -16,7 +17,9 @@ class PayPalController extends Controller
     public function processTransaction(Request $request)
     {
         $ticketId = $request->ticket;
-
+        // $pic = file_get_contents('storage/APEX.png');
+        // dd($pic);
+    
         if ($ticketId === 'ticket-1') {
             $amount = 15.99;
         } else if ($ticketId === 'ticket-2') {
@@ -25,10 +28,11 @@ class PayPalController extends Controller
             $amount = 20;
         }
 
-        $totalValue = $amount;
+        $totalValue = round(($amount * 1.05), 2);
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
+
 
         $response = $provider->createOrder([
             "intent" => "CAPTURE",
@@ -40,9 +44,10 @@ class PayPalController extends Controller
                 0 => [
                     "amount" => [
                         "currency_code" => "EUR",
-                        "value" => $totalValue,
-                    ]
-                ]
+                        "value" => $totalValue
+                    ],
+
+                ],
             ]
         ]);
 
@@ -70,11 +75,42 @@ class PayPalController extends Controller
         $provider->setApiCredentials(config('paypal'));
         $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request['token']);
+        //$status = $provider->registerPaymentInvoice($invoice_no, $payment_date, $payment_method, $amount);
+
+
+
+        function flatten($array)
+        {
+            $return = array();
+            while (count($array)) {
+                $value = array_shift($array);
+                if (is_array($value))
+                    foreach ($value as $sub)
+                        $array[] = $sub;
+                else
+                    $return[] = $value;
+            }
+            return $return;
+        }
+
+        $cleanedArr = flatten($response);
+        $transactionCode = $cleanedArr[17];
+
+        $qrcode = QrCode::size(500)
+        ->style('round')
+        //->gradient(131, 58, 180, 53, 159, 196, 'radial')
+        ->backgroundColor(138, 43, 226)
+        ->errorCorrection('H')
+        ->generate($transactionCode, '../public/QRCode.svg');
+
+
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             return redirect()
                 ->route('createTransaction')
-                ->with('success', 'Transaction complete.');
+                ->with('success', 'Transaction complete.')
+                ->with('qrcode', $qrcode)
+                ->with('transactionCode', $transactionCode);
         } else {
             return redirect()
                 ->route('createTransaction')

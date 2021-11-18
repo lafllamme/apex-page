@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaypalController;
+use BaconQrCode\Encoder\QrCode;
+use App\Http\Controllers\QRController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +16,17 @@ use App\Http\Controllers\PaypalController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/','welcome')->name('home');
+
+// Route::get('home', function () {
+//     return view('welcome')->name('home');
+// });
+
+
+//Route::get('index', [QRController::class, 'index'])->name('index');
+Route::post('qrcode', [QRController::class, 'qrcode'])->name('qrcode');
+
+
 
 Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
 Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');

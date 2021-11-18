@@ -34,6 +34,8 @@
             color: var(--white-gr);
             background: var(--dark-blue);
             overflow-x: hidden;
+
+
         }
 
         h2 {
@@ -631,7 +633,23 @@
                     {{ \Session::forget('error') }}
                     @endif
                     @if(\Session::has('success'))
-                    <div class="alert alert-success">{{ \Session::get('success') }}</div>
+
+                    <div id="success" class="alert alert-success">{{ \Session::get('success') }}</div>
+                    <!-- <form class="text-center" action="{{route('qrcode')}}" method="post" accept-charset="utf-8">
+                        @csrf -->
+                    <div class="row mt-5">
+                        <div class="col-md-12">
+                            <h2>Das ist dein Ticket!</h2>
+                            <!-- <button class="btn btn-success" type="submit">Generate</button> -->
+                            <a href="{{asset('QrCode.svg')}}" class="btn btn-primary" download>Download</a><br>
+                            <img class="img-thumbnail" src="{{asset('QrCode.svg')}}" width="150" height="150" style="margin-top: 20px">
+                        </div>
+                        <div>{{$qrcode ?? '' ?? ''}}
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+                    <!-- </form> -->
                     {{ \Session::forget('success') }}
                     @endif
                 </div>
@@ -644,6 +662,15 @@
 </html>
 <script src="{{ mix('/js/app.js') }}"></script>
 <script>
+    var domElement = document.getElementById('success');
+    if (domElement) {
+
+        window.onbeforeunload = function() {
+            return true;
+        };
+
+    }
+
     var countDownDate = new Date("November 31, 2021 23:59:00").getTime();
 
     // Update the count down every 1 second
