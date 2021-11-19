@@ -111,15 +111,13 @@ class PayPalController extends Controller
         
      
         Storage::disk('public')->put($finalFolderName, $qrcode);
-        $filePathName='storage/'.$finalFolderName;
-        $url = asset($filePathName);
+        $url = Storage::url($finalFolderName);
 
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             return redirect()
                 ->route('createTransaction')
                 ->with('success', 'Transaction complete.')
-                ->with('filePathName', $filePathName)
                 ->with('url', $url);
         } else {
             return redirect()
