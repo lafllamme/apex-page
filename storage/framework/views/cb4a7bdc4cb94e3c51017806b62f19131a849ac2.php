@@ -236,10 +236,6 @@ while the background image is loading */
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
-    window.onbeforeunload = function() {
-        return true;
-    };
-
     document.addEventListener('DOMContentLoaded', () => {
         const form = document.getElementById('registrar'); //const because we wont be assigning any different value to form
         const input = form.querySelector('input'); //reads what was put into form
