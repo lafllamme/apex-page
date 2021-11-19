@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 
 <head>
     <meta charset="utf-8">
@@ -210,7 +210,7 @@ while the background image is loading */
 </body>
 
 </html>
-<script src="{{ mix('/js/app.js') }}"></script>
+<script src="<?php echo e(mix('/js/app.js')); ?>"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
@@ -351,4 +351,4 @@ while the background image is loading */
         });
 
     }); //end DOMContentListener
-</script>
+</script><?php /**PATH /var/www/html/resources/views/list.blade.php ENDPATH**/ ?>

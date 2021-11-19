@@ -29,6 +29,7 @@ Route::get('/linkstorage', function (){
 $link=Artisan::call('storage:link');
 dd($link);
 });
+Route::view('list', 'list');
 
 
 Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
