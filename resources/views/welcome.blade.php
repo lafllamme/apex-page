@@ -640,12 +640,12 @@
                     <div class="row mt-5">
                         <div class="col-md-12">
                             <h2>Das ist dein Ticket!</h2>
+                    
                             <!-- <button class="btn btn-success" type="submit">Generate</button> -->
-                            <a href="{{asset('QrCode.svg')}}" class="btn btn-primary" download>Download</a><br>
-                            <img class="img-thumbnail" src="{{asset('QrCode.svg')}}" width="150" height="150" style="margin-top: 20px">
+                            <a href="{{\Session::get('url')}}" class="btn btn-primary" download>Download</a><br>
+                            <img class="img-thumbnail" src="{{\Session::get('url')}}" width="150" height="150" style="margin-top: 20px">
                         </div>
-                        <div>{{$qrcode ?? '' ?? ''}}
-                        </div>
+
                         <br>
                         <br>
                     </div>

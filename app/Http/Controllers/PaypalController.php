@@ -19,7 +19,7 @@ class PayPalController extends Controller
         $ticketId = $request->ticket;
         // $pic = file_get_contents('storage/APEX.png');
         // dd($pic);
-    
+
         if ($ticketId === 'ticket-1') {
             $amount = 15.99;
         } else if ($ticketId === 'ticket-2') {
@@ -97,20 +97,30 @@ class PayPalController extends Controller
         $transactionCode = $cleanedArr[17];
 
         $qrcode = QrCode::size(500)
-        ->style('round')
-        //->gradient(131, 58, 180, 53, 159, 196, 'radial')
-        ->backgroundColor(138, 43, 226)
-        ->errorCorrection('H')
-        ->generate($transactionCode, '../public/QRCode.svg');
+            ->style('round')
+            //->gradient(131, 58, 180, 53, 159, 196, 'radial')
+            ->backgroundColor(138, 43, 226)
+            ->errorCorrection('H')
+            ->generate($transactionCode);
 
+        $date = date("Ymd");
+
+        $fileName = $transactionCode."QrCode.svg";
+        $folderName = "transaction/" . $date . "/" . $fileName;
+        $finalFolderName = str_replace(' ', '', $folderName);
+        
+     
+        Storage::disk('public')->put($finalFolderName, $qrcode);
+        $filePathName='storage/'.$finalFolderName;
+        $url = asset($filePathName);
 
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             return redirect()
                 ->route('createTransaction')
                 ->with('success', 'Transaction complete.')
-                ->with('qrcode', $qrcode)
-                ->with('transactionCode', $transactionCode);
+                ->with('filePathName', $filePathName)
+                ->with('url', $url);
         } else {
             return redirect()
                 ->route('createTransaction')
