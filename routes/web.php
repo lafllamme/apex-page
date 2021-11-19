@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaypalController;
 use BaconQrCode\Encoder\QrCode;
 use App\Http\Controllers\QRController;
-
+use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +25,10 @@ Route::view('/','welcome')->name('home');
 
 //Route::get('index', [QRController::class, 'index'])->name('index');
 Route::post('qrcode', [QRController::class, 'qrcode'])->name('qrcode');
-
+Route::get('/linkstorage', function (){
+$link=Artisan::call('storage:link');
+dd($link);
+});
 
 
 Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Artisan;
 
 class PayPalController extends Controller
 {
@@ -108,7 +109,7 @@ class PayPalController extends Controller
         $fileName = $transactionCode."QrCode.svg";
         $folderName = "transaction/" . $date . "/" . $fileName;
         $finalFolderName = str_replace(' ', '', $folderName);
-        
+    
      
         Storage::disk('public')->put($finalFolderName, $qrcode);
         $url = Storage::url($finalFolderName);
