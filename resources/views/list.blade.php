@@ -205,7 +205,7 @@ while the background image is loading */
                 <form action="{{url('edit', ['id' => $payment['id'] ] )}}" method="post">
                     @csrf
                     <li class="">
-                     
+
                         <span>{{$payment['name']}}</span>
                         <label for="">Arrived
 
@@ -217,7 +217,8 @@ while the background image is loading */
                 </form>
                 </label>
                 <button type="button">edit</button type="button">
-                <button type="button">remove</button>
+                <button type="button" value="{{$payment['id']}}">remove</button>
+
                 </li>
 
 
@@ -346,9 +347,13 @@ while the background image is loading */
                 const button = e.target;
                 const li = e.target.parentNode;
                 const ul = li.parentNode;
+                // const value = document.getElementById(li).value;
 
                 if (button.textContent === 'remove') {
+                    console.log(button.value);
+                    
                     ul.removeChild(li);
+
                 } else if (button.textContent === 'edit') {
                     const span = li.firstElementChild;
                     const input = document.createElement('input');
@@ -369,4 +374,8 @@ while the background image is loading */
         });
 
     }); //end DOMContentListener
+
+    remove = () => {
+
+    }
 </script>

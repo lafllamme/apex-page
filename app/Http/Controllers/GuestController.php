@@ -29,4 +29,11 @@ class GuestController extends Controller
 
         return redirect()->route('guests');
     }
+    
+    public function delete($id, Request $request){
+        $obj = Payment::findOrFail($id);
+        $obj->delete();
+
+        return redirect()->route('guests');
+    }
 }

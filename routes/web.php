@@ -33,6 +33,7 @@ Route::get('/setup', function () {
 Route::view('list', 'list');
 Route::get('guests', [GuestController::class, 'index'])->name('guests');
 Route::post('edit/{id}', [GuestController::class, 'edit']);
+Route::post('delete/{id}', [GuestController::class, 'delete']);
 
 
 Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
