@@ -15,22 +15,31 @@ class GuestController extends Controller
         return view('list')->with('payments', $payments);
     }
 
+    public function create(Request $request)
+    {
+        $personName = $request->name;
+        $payment = new Payment;
+        $payment->name = $personName;
+        //dd($request, $payment);
+        $payment->save();
+        return redirect()->route('guests');
+    }
     public function edit($id, Request $request)
     {
         $obj = Payment::findOrFail($id);
         $checked = $request->has('checked');
         if (!empty($checked)) {
             $obj->checked = 1;
-        }
-        else {
+        } else {
             $obj->checked = 0;
         }
         $obj->save();
 
         return redirect()->route('guests');
     }
-    
-    public function delete($id, Request $request){
+
+    public function delete($id, Request $request)
+    {
         $obj = Payment::findOrFail($id);
         $obj->delete();
 

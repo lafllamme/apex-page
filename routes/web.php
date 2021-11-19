@@ -5,6 +5,7 @@ use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\QRController;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,12 +32,18 @@ Route::get('/setup', function () {
     dd($link, $migrate);
 });
 Route::view('list', 'list');
-Route::get('guests', [GuestController::class, 'index'])->name('guests');
+Route::get('guests', [GuestController::class, 'index'])->name('guests')->middleware('auth');
 Route::post('edit/{id}', [GuestController::class, 'edit']);
 Route::post('delete/{id}', [GuestController::class, 'delete']);
+Route::post('create', [GuestController::class, 'create']);
+
 
 
 Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
 Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
 Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
 Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

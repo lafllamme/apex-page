@@ -96,17 +96,17 @@ while the background image is loading */
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            padding: 15px;
+            padding: 5%;
             border-top: 4px ridge #B266FF;
             border-bottom: 4px ridge #B266FF;
         }
 
         li {
             list-style: none;
-            border: 1px solid #f2efef;
+            border: 1px solid purple;
             box-shadow: 2px 2px 5px grey;
             border-radius: 3px;
-            margin: 5px;
+            margin: 0%;
             flex-grow: 1;
             padding: .75em;
             height: 100%;
@@ -118,14 +118,14 @@ while the background image is loading */
         }
 
         li input[type=text] {
-            width: 5em;
+            width: 20%;
             font-size: 1.75em;
         }
 
         li label {
             display: block;
             color: grey;
-            margin-top: 5px;
+            margin-top: 5%;
         }
 
         .checked {
@@ -133,7 +133,7 @@ while the background image is loading */
         }
 
         li button {
-            margin-right: 5px;
+            margin-right: 5%;
             width: 100%;
         }
 
@@ -174,7 +174,7 @@ while the background image is loading */
             }
 
             .main>div {
-                margin: 15px 0;
+                margin: 15 px 0;
                 font-size: .8em;
             }
 
@@ -185,15 +185,16 @@ while the background image is loading */
     </style>
 </head>
 
-
-
 <body>
+    <?php if(Auth::user() && Auth::user()->role == 'admin'): ?>
+
     <div class="wrapper">
         <header>
             <h1>Guest List</h1>
             <p>- Checked In Guests-</p>
-            <form id="registrar">
-                <input type="text" name="name" placeholder="Invite Someone">
+            <form action="<?php echo e(url('create')); ?>" method="post">
+                <?php echo csrf_field(); ?>
+                <input type="text" name="name" placeholder="Enter Name ...">
                 <button type="submit" name="submit" value="submit">Add</button>
             </form>
         </header>
@@ -217,7 +218,13 @@ while the background image is loading */
                 </form>
                 </label>
                 <button type="button">edit</button type="button">
-                <button type="button" value="<?php echo e($payment['id']); ?>">remove</button>
+
+                <form action="<?php echo e(url('delete', ['id' => $payment['id'] ] )); ?>" method="post">
+                    <?php echo csrf_field(); ?>
+                    <button type="submit">remove</button type="button">
+
+                </form>
+
 
                 </li>
 
@@ -226,6 +233,10 @@ while the background image is loading */
             </ul>
         </div>
     </div>
+    <?php else: ?>
+    <div>
+        <img src="https://i.gifer.com/y7.gif" alt="">
+    </div> <?php endif; ?>
     <footer>by <a href="https://www.instagram.com/apex.cologne">APEX EVENTS</a></footer>
 </body>
 
@@ -238,7 +249,7 @@ while the background image is loading */
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const form = document.getElementById('registrar'); //const because we wont be assigning any different value to form
+        const form = document.getElementById('register'); //const because we wont be assigning any different value to form
         const input = form.querySelector('input'); //reads what was put into form
         const mainDiv = document.querySelector('.main');
         const ul = document.getElementById('invitedList');
@@ -313,7 +324,7 @@ while the background image is loading */
         }
 
         form.addEventListener('submit', (e) => { //submit event listener instead of click so it runs if someone clicks enter after typing
-            e.preventDefault(); //stops page from trying to submit to server and reloading when e happens
+            //e.preventDefault(); //stops page from trying to submit to server and reloading when e happens
             if (input.value === '') {
                 input.placeholder = "Please enter guest name.";
                 input.className = 'error';
@@ -350,9 +361,9 @@ while the background image is loading */
                 // const value = document.getElementById(li).value;
 
                 if (button.textContent === 'remove') {
-                    console.log(button.value);
-                    
+                    console.log(button, li, ul);
                     ul.removeChild(li);
+                    li.submit();
 
                 } else if (button.textContent === 'edit') {
                     const span = li.firstElementChild;

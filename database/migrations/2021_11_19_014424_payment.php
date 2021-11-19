@@ -15,11 +15,11 @@ class Payment extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->string('transactionId')->unique();
-            $table->string('name');
-            $table->string('amount');
-            $table->string('email');
-            $table->boolean('checked')->default(false);
+            $table->string('transactionId')->unique()->nullable();
+            $table->string('name')->nullable();;
+            $table->string('amount')->nullable();;
+            $table->string('email')->nullable();;
+            $table->boolean('checked')->default(false)->nullable();
             $table->timestamps();
         });
     }
