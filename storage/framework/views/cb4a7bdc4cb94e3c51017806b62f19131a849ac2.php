@@ -79,7 +79,7 @@ while the background image is loading */
             border: none;
             border-radius: 2px;
             width: 15%;
-            background: #B266FF;
+            background: #B266FF[];
         }
 
         header form {
@@ -200,7 +200,29 @@ while the background image is loading */
 
         <div class="main">
             <h2>Invitees</h2>
-            <ul id="invitedList"></ul>
+            <ul id="invitedList">
+                <?php $__currentLoopData = $payments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $payment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <form action="<?php echo e(url('edit', ['id' => $payment['id'] ] )); ?>" method="post">
+                    <?php echo csrf_field(); ?>
+                    <li class="">
+                     
+                        <span><?php echo e($payment['name']); ?></span>
+                        <label for="">Arrived
+
+                            <?php if($payment['checked']== 1): ?>
+                            <input name='checked' onchange="this.form.submit()" checked type="checkbox">
+                            <?php else: ?>
+                            <input name='checked' onchange="this.form.submit()" type="checkbox">
+                            <?php endif; ?>
+                </form>
+                </label>
+                <button type="button">edit</button type="button">
+                <button type="button">remove</button>
+                </li>
+
+
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </ul>
         </div>
     </div>
     <footer>by <a href="https://www.instagram.com/apex.cologne">APEX EVENTS</a></footer>

@@ -79,7 +79,7 @@ while the background image is loading */
             border: none;
             border-radius: 2px;
             width: 15%;
-            background: #B266FF;
+            background: #B266FF[];
         }
 
         header form {
@@ -200,7 +200,29 @@ while the background image is loading */
 
         <div class="main">
             <h2>Invitees</h2>
-            <ul id="invitedList"></ul>
+            <ul id="invitedList">
+                @foreach ($payments as $payment)
+                <form action="{{url('edit', ['id' => $payment['id'] ] )}}" method="post">
+                    @csrf
+                    <li class="">
+                     
+                        <span>{{$payment['name']}}</span>
+                        <label for="">Arrived
+
+                            @if($payment['checked']== 1)
+                            <input name='checked' onchange="this.form.submit()" checked type="checkbox">
+                            @else
+                            <input name='checked' onchange="this.form.submit()" type="checkbox">
+                            @endif
+                </form>
+                </label>
+                <button type="button">edit</button type="button">
+                <button type="button">remove</button>
+                </li>
+
+
+                @endforeach
+            </ul>
         </div>
     </div>
     <footer>by <a href="https://www.instagram.com/apex.cologne">APEX EVENTS</a></footer>

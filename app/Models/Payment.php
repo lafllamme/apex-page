@@ -12,6 +12,7 @@ class Payment extends Model
         'name',
         'email',
         'amount',
-        'transactionId'
+        'transactionId',
+        'checked',
     ];
 }

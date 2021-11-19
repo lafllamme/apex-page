@@ -19,6 +19,7 @@ class Payment extends Migration
             $table->string('name');
             $table->string('amount');
             $table->string('email');
+            $table->boolean('checked')->default(false);
             $table->timestamps();
         });
     }
