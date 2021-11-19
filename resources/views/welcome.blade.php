@@ -373,6 +373,10 @@
             max-width: 100%;
             margin: auto;
         }
+
+        #target {
+            transition: opacity 3s;
+        }
     </style>
 </head>
 <br>
@@ -383,6 +387,9 @@
             <img src=" https://i.imgur.com/IFxxU4v.png" class="responsive" width="500" height="500" alt="">
         </div>
     </div>
+    <audio id="audio" src="https://www.soundjay.com/buttons/button-34.mp3"></audio>
+    <audio id="audio2" src="https://www.myinstants.com/media/sounds/sm64_mario_lets_go.mp3"></audio>
+
 
 
     <div class="section">
@@ -395,11 +402,11 @@
                     <br>
                     <br>
 
-                    <form action="{{ route('processTransaction') }}" id="form">
+                    <form action="{{ route('processTransaction') }}" id="form" onsubmit="play('audio2')">
                         @csrf
                         <div class="section">
                             <input class="checkbox-ticket" type="radio" value="ticket-1" name="ticket" id="ticket-1">
-                            <label for="ticket-1">
+                            <label for="ticket-1" onclick="play('audio')">
                                 <span class="top-dots">
                                     <span class="section dots">
                                         <span></span>
@@ -475,7 +482,7 @@
                             </label>
                             <!--
 						--><input class="checkbox-ticket" type="radio" value="ticket-2" name="ticket" id="ticket-2">
-                            <label for="ticket-2">
+                            <label for="ticket-2" onclick="play('audio')">
                                 <span class="top-dots">
                                     <span class="section dots">
                                         <span></span>
@@ -551,7 +558,7 @@
                             </label>
                             <!--
 						--><input class="checkbox-ticket" type="radio" value="ticket-3" name="ticket" id="ticket-3">
-                            <label for="ticket-3">
+                            <label for="ticket-3" onclick="play('audio')">
                                 <span class="top-dots">
                                     <span class="section dots">
                                         <span></span>
@@ -634,20 +641,20 @@
                     @endif
                     @if(\Session::has('success'))
 
-                    <div id="success" class="alert alert-success">{{ \Session::get('success') }}</div>
+                    <div id="success" class="alert alert-light">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        {{ \Session::get('success') }}
+                    </div>
                     <!-- <form class="text-center" action="{{route('qrcode')}}" method="post" accept-charset="utf-8">
                         @csrf -->
-                    <div class="row mt-5">
+                    <div class="my-sm-3">
                         <div class="col-md-12">
                             <h2>Das ist dein Ticket!</h2>
-                    
+
                             <!-- <button class="btn btn-success" type="submit">Generate</button> -->
                             <a href="{{\Session::get('url')}}" class="btn btn-primary" download>Download</a><br>
-                            <img class="img-thumbnail" src="{{\Session::get('url')}}" width="150" height="150" style="margin-top: 20px">
+                            <img src="{{\Session::get('url')}}" width="150" height="150" style="margin-top: 20px">
                         </div>
-
-                        <br>
-                        <br>
                     </div>
                     <!-- </form> -->
                     {{ \Session::forget('success') }}
@@ -661,14 +668,35 @@
 
 </html>
 <script src="{{ mix('/js/app.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
+    play = (domElement) => {
+        var audio = document.getElementById(domElement);
+        audio.play();
+    }
+
     var domElement = document.getElementById('success');
+
+    $(document).ready(function() {
+        $('#submit-button').click(function(ev) {
+            play('audio2');
+            ev.preventDefault();
+        });
+    });
+
+
     if (domElement) {
 
         window.onbeforeunload = function() {
             return true;
         };
 
+        $(document).ready(function() {
+            $("#success").fadeTo(5000, 500).slideUp(500, function() {
+                $("#success").slideUp(500);
+            });
+        });
     }
 
     var countDownDate = new Date("November 31, 2021 23:59:00").getTime();

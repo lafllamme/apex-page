@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Artisan;
+use App\Models\Payment;
 
 class PayPalController extends Controller
 {
@@ -79,7 +79,6 @@ class PayPalController extends Controller
         //$status = $provider->registerPaymentInvoice($invoice_no, $payment_date, $payment_method, $amount);
 
 
-
         function flatten($array)
         {
             $return = array();
@@ -94,26 +93,42 @@ class PayPalController extends Controller
             return $return;
         }
 
+        //FIX ME: find better solution
         $cleanedArr = flatten($response);
         $transactionCode = $cleanedArr[17];
+        $personName = $cleanedArr[5] . ' ' . $cleanedArr[6];
+        $email = $cleanedArr[2];
+        $amount = $cleanedArr[23];
 
+        $qrData = [
+            $personName, $email, $amount, $transactionCode
+        ];
+
+        $shortString = [$qrData[0], $qrData[3]];
+        $qrString = implode("|", $shortString);
         $qrcode = QrCode::size(500)
             ->style('round')
             //->gradient(131, 58, 180, 53, 159, 196, 'radial')
             ->backgroundColor(138, 43, 226)
             ->errorCorrection('H')
-            ->generate($transactionCode);
+            ->generate($qrString);
 
         $date = date("Ymd");
 
-        $fileName = $transactionCode."QrCode.svg";
+        $fileName = $transactionCode . "QrCode.svg";
         $folderName = "transaction/" . $date . "/" . $fileName;
         $finalFolderName = str_replace(' ', '', $folderName);
-    
-     
+
+
         Storage::disk('public')->put($finalFolderName, $qrcode);
         $url = Storage::url($finalFolderName);
 
+        $payment = new Payment;
+        $payment->transactionId = $transactionCode;
+        $payment->name = $personName;
+        $payment->amount = $amount;
+        $payment->email = $email;
+        $payment->save();
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             return redirect()
