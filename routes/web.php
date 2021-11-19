@@ -29,7 +29,8 @@ Route::post('qrcode', [QRController::class, 'qrcode'])->name('qrcode');
 Route::get('/setup', function () {
     $link = Artisan::call('storage:link');
     $migrate = Artisan::call('migrate');
-    dd($link, $migrate);
+    $auth = Artisan::call('ui vue --auth');
+    dd($link, $migrate, $auth);
 });
 Route::view('list', 'list');
 Route::get('guests', [GuestController::class, 'index'])->name('guests')->middleware('auth');
