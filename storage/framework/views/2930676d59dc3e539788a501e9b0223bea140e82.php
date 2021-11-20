@@ -1,63 +1,8 @@
-<?php $__env->startSection('content'); ?>
-<h2>Weekly Coding Challenge #1: Sign in/up Form</h2>
-<div class="container" id="container">
-    <div class="form-container sign-up-container">
-        <form action="#">
-            <h1>Create Account</h1>
-            <div class="social-container">
-                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-            <span>or use your email for registration</span>
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button>Sign Up</button>
-        </form>
-    </div>
-    <div class="form-container sign-in-container">
-        <form action="#">
-            <h1>Sign in</h1>
-            <div class="social-container">
-                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-            <span>or use your account</span>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <a href="#">Forgot your password?</a>
-            <button>Sign In</button>
-        </form>
-    </div>
-    <div class="overlay-container">
-        <div class="overlay">
-            <div class="overlay-panel overlay-left">
-                <h1>Welcome Back!</h1>
-                <p>To keep connected with us please login with your personal info</p>
-                <button class="ghost" id="signIn">Sign In</button>
-            </div>
-            <div class="overlay-panel overlay-right">
-                <h1>Hello, Friend!</h1>
-                <p>Enter your personal details and start journey with us</p>
-                <button class="ghost" id="signUp">Sign Up</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<footer>
-    <p>
-        Created with <i class="fa fa-heart"></i> by
-        <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
-        - Read how I created this and how you can join the challenge
-        <a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
-    </p>
-</footer>
-
 <style>
-    @import  url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+    @font-face {
+        font-family: "MyWebFont";
+        src: url("/fonts/font.woff2") format("woff2");
+    }
 
     * {
         box-sizing: border-box;
@@ -69,7 +14,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'MyWebFont', sans-serif;
         height: 100vh;
         margin: -20px 0 50px;
     }
@@ -104,8 +49,8 @@
 
     button {
         border-radius: 20px;
-        border: 1px solid #FF4B2B;
-        background-color: #FF4B2B;
+        border: 1px solid #26bfb5;
+        background-color: #26bfb5;
         color: #FFFFFF;
         font-size: 12px;
         font-weight: bold;
@@ -113,6 +58,7 @@
         letter-spacing: 1px;
         text-transform: uppercase;
         transition: transform 80ms ease-in;
+        font-family: 'MyWebFont';
     }
 
     button:active {
@@ -145,6 +91,7 @@
         padding: 12px 15px;
         margin: 8px 0;
         width: 100%;
+        font-family: 'MyWebFont';
     }
 
     .container {
@@ -154,7 +101,8 @@
             0 10px 10px rgba(0, 0, 0, 0.22);
         position: relative;
         overflow: hidden;
-        width: 768px;
+        width: 100%;
+        height: 100%;
         max-width: 100%;
         min-height: 480px;
     }
@@ -222,8 +170,8 @@
 
     .overlay {
         background: #FF416C;
-        background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-        background: linear-gradient(to right, #FF4B2B, #FF416C);
+        background: -webkit-linear-gradient(to right, #05faea, #26bfb5);
+        background: linear-gradient(to right, #05faea, #26bfb5);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: 0 0;
@@ -312,6 +260,68 @@
         text-decoration: none;
     }
 </style>
+
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet">
+    </link>
+</head>
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <form method="POST" action="<?php echo e(route('register')); ?>">
+            <?php echo csrf_field(); ?>
+            <h1>Create Account</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>or use your email for registration</span>
+            <input id="name" type="text" name="name" placeholder="Name" />
+            <input id="email" type="email" name="email" placeholder="Email" />
+            <input id="password" type="password" name="password" placeholder="Password" />
+            <input id="password-confirm" type="password" name="password_confirmation" placeholder="Repeat Password" />
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        <form method="POST" action="<?php echo e(route('login')); ?>">
+            <?php echo csrf_field(); ?>
+            <h1>Sign in</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>or use your account</span>
+            <input type="email" id="email" name="email" placeholder="Email" />
+            <input type="password" id="password" name="password" placeholder="Password" />
+            <span>Remember Me
+                <input type="checkbox" name="remember" id="remember">
+            </span>
+            <a href="#">Forgot your password?</a>
+            <button>Sign In</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Raver!</h1>
+                <p>Enter your personal details and start a journey with us</p>
+                <button class="ghost" id="signUp">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+
+</footer>
 <script>
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
@@ -324,6 +334,4 @@
     signInButton.addEventListener('click', () => {
         container.classList.remove("right-panel-active");
     });
-</script>
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/auth/login.blade.php ENDPATH**/ ?>
+</script><?php /**PATH /var/www/html/resources/views/auth/login.blade.php ENDPATH**/ ?>

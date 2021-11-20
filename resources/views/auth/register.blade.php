@@ -1,5 +1,4 @@
 <style>
-
     @font-face {
         font-family: "MyWebFont";
         src: url("/fonts/font.woff2") format("woff2");
@@ -297,6 +296,9 @@
             <span>or use your account</span>
             <input type="email" id="email" name="email" placeholder="Email" />
             <input type="password" id="password" name="password" placeholder="Password" />
+            <span>Remember Me
+                <input type="checkbox" name="remember" id="remember">
+            </span>
             <a href="#">Forgot your password?</a>
             <button>Sign In</button>
         </form>
