@@ -22,11 +22,11 @@ class PayPalController extends Controller
         // dd($pic);
 
         if ($ticketId === 'ticket-1') {
-            $amount = 15.99;
+            $amount = 12;
         } else if ($ticketId === 'ticket-2') {
-            $amount = 17.99;
+            $amount = 15;
         } else if ($ticketId === 'ticket-3') {
-            $amount = 20;
+            $amount = 18;
         }
 
         $totalValue = round(($amount * 1.05), 2);

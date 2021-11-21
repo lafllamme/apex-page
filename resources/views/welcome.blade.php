@@ -406,7 +406,7 @@
                         @csrf
                         <div class="section">
                             <input class="checkbox-ticket" type="radio" value="ticket-1" name="ticket" id="ticket-1">
-                            <label for="ticket-1" onclick="play('audio')">
+                            <label for="ticket-1" onclick="play('audio')" id="disable-ticket-1">
                                 <span class="top-dots">
                                     <span class="section dots">
                                         <span></span>
@@ -431,7 +431,7 @@
                                 <span class="duration">
                                     Early Bird </span>
                                 <span class="price mt-2 pb-4 mb-3">
-                                    15.99<sup>€</sup>
+                                    12<sup>€</sup>
                                 </span>
                                 <span class="section dots">
                                     <span></span>
@@ -482,8 +482,8 @@
                             </label>
                             <!--
 						--><input class="checkbox-ticket" type="radio" value="ticket-2" name="ticket" id="ticket-2">
-                            <label for="ticket-2" onclick="play('audio')">
-                                <span class="top-dots">
+                            <label for="ticket-2" onclick="play('audio')" id="disable-ticket-2">
+                                <span class=" top-dots">
                                     <span class="section dots">
                                         <span></span>
                                         <span></span>
@@ -508,7 +508,7 @@
                                     Regular
                                 </span>
                                 <span class="price mt-2 pb-4 mb-3">
-                                    17.99<sup>€</sup>
+                                    15<sup>€</sup>
                                 </span>
                                 <span class="section dots">
                                     <span></span>
@@ -584,7 +584,7 @@
                                     Abendkasse
                                 </span>
                                 <span class="price mt-2 pb-4 mb-3">
-                                    20<sup>€</sup>
+                                    18<sup>€</sup>
                                 </span>
                                 <span class="section dots">
                                     <span></span>
@@ -699,7 +699,8 @@
         });
     }
 
-    var countDownDate = new Date("November 31, 2021 23:59:00").getTime();
+    var countDownDate = new Date("November 30, 2021 23:59:00").getTime();
+    var countDownDate2 = new Date("December 2, 2021 23:59:00").getTime();
 
     // Update the count down every 1 second
     var x = setInterval(function() {
@@ -708,6 +709,7 @@
 
         // Find the distance between now an the count down date
         var distance = countDownDate - now;
+        var distance2 = countDownDate2 - now;
 
         // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -720,14 +722,21 @@
             days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
         document.getElementById("demo2").innerHTML =
-            (days + 4) + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+            (days + 2) + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
         document.getElementById("demo3").innerHTML = "Sa, 04.12.21";
 
         // If the count down is finished, write some text
-        if (distance < 0) {
+        if (distance <= 0) {
             clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
+            document.getElementById("disable-ticket-1").remove();
+
+
+        }
+
+        if (distance2 <= 0) {
+            clearInterval(x);
+            document.getElementById("disable-ticket-2").remove();
         }
     }, 1000);
 
