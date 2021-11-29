@@ -408,7 +408,7 @@
 
                     <h2 class="pb-4">CHOOSE <i class='uil uil-ticket color-yellow'></i> TICKET</h2>
 
-                    <div class="progress-pie-chart" data-percent="59">
+                    <div class="progress-pie-chart" data-percent="59" onclick="alert('Hurry up and get your ticket!')">
                         <div class="ppc-progress">
                             <div class="ppc-progress-fill"></div>
                         </div>
