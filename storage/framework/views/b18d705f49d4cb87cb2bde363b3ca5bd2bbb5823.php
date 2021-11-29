@@ -377,6 +377,14 @@
         #target {
             transition: opacity 3s;
         }
+
+        #disable-ticket-1 {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
+            background-blend-mode: multiply, multiply;
+            pointer-events: none;
+
+
+        }
     </style>
 </head>
 <br>
@@ -399,7 +407,17 @@
                     <br>
 
                     <h2 class="pb-4">CHOOSE <i class='uil uil-ticket color-yellow'></i> TICKET</h2>
-                    <br>
+
+                    <div class="progress-pie-chart" data-percent="59">
+                        <div class="ppc-progress">
+                            <div class="ppc-progress-fill"></div>
+                        </div>
+                        <div class="ppc-percents">
+                            <div class="pcc-percents-wrapper">
+                                <span>%</span>
+                            </div>
+                        </div>
+                    </div>
                     <br>
 
                     <form action="<?php echo e(route('processTransaction')); ?>" id="form" onsubmit="play('audio2')">
@@ -407,7 +425,8 @@
                         <div class="section">
                             <input class="checkbox-ticket" type="radio" value="ticket-1" name="ticket" id="ticket-1">
                             <label for="ticket-1" onclick="play('audio')" id="disable-ticket-1">
-                                <span class="top-dots">
+                                <span class=" top-dots">
+
                                     <span class="section dots">
                                         <span></span>
                                         <span></span>
@@ -672,7 +691,81 @@
 </html>
 <script src="<?php echo e(mix('/js/app.js')); ?>"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+    .progress-pie-chart {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: #5c157a;
+        position: relative;
+    }
 
+    .progress-pie-chart.gt-50 {
+        background-color: #2dede4;
+    }
+
+    .ppc-progress {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        left: calc(50% - 100px);
+        top: calc(50% - 100px);
+        width: 200px;
+        height: 200px;
+        clip: rect(0, 200px, 200px, 100px);
+    }
+
+    .ppc-progress .ppc-progress-fill {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        left: calc(50% - 100px);
+        top: calc(50% - 100px);
+        width: 200px;
+        height: 200px;
+        clip: rect(0, 100px, 200px, 0);
+        background: #2dede4;
+        transform: rotate(60deg);
+    }
+
+    .gt-50 .ppc-progress {
+        clip: rect(0, 100px, 200px, 0);
+    }
+
+    .gt-50 .ppc-progress .ppc-progress-fill {
+        clip: rect(0, 200px, 200px, 100px);
+        background: #5c157a;
+    }
+
+    .ppc-percents {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        left: calc(50% - 173.9130434783px/2);
+        top: calc(50% - 173.9130434783px/2);
+        width: 173.9130434783px;
+        height: 173.9130434783px;
+        background: black;
+        text-align: center;
+        display: table;
+    }
+
+    .ppc-percents span {
+        display: block;
+        font-size: 2em;
+        font-weight: bold;
+        color: #2dede4;
+    }
+
+    .pcc-percents-wrapper {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .progress-pie-chart {
+        margin: 0px auto 0;
+    }
+</style>
 <script>
     play = (domElement) => {
         var audio = document.getElementById(domElement);
@@ -685,6 +778,17 @@
         $('#submit-button').click(function(ev) {
             play('audio2');
             ev.preventDefault();
+        });
+
+        $(function() {
+            var $ppc = $('.progress-pie-chart'),
+                percent = parseInt($ppc.data('percent')),
+                deg = 360 * percent / 100;
+            if (percent > 50) {
+                $ppc.addClass('gt-50');
+            }
+            $('.ppc-progress-fill').css('transform', 'rotate(' + deg + 'deg)');
+            $('.ppc-percents span').html(percent + '%');
         });
     });
 
@@ -730,12 +834,10 @@
         document.getElementById("demo3").innerHTML = "Sa, 04.12.21";
 
         // If the count down is finished, write some text
-        if (distance <= 0) {
-            clearInterval(x);
-            document.getElementById("disable-ticket-1").remove();
+
+        document.getElementById("demo").innerHTML = 'SOLD OUT';
 
 
-        }
 
         if (distance2 <= 0) {
             clearInterval(x);
