@@ -26,8 +26,8 @@
             font-size: 20px;
             --dark-blue: black;
             --white-gr: #c4c3ca;
-            --yellow: #8855dd;
-            --yellow-2: #20e7e7;
+            --yellow: #63FFB5;
+            --yellow-2: #efff63;
         }
 
         body {
@@ -357,7 +357,7 @@
 
         #mydiv {
             top: 0%;
-            left: 52%;
+            left: 60%;
             width: 25em;
             height: 14em;
             margin-top: -10em;
@@ -392,7 +392,7 @@
 <body>
     <div onclick="window.location='https://www.instagram.com/apex.cologne'">
         <div id="mydiv">
-            <img src=" https://i.imgur.com/IFxxU4v.png" class="responsive" width="500" height="500" alt="">
+            <img src="https://i.imgur.com/yqlpd1I.png" class="responsive" width="450" height="450" alt="">
         </div>
     </div>
     <audio id="audio" src="https://www.soundjay.com/buttons/button-34.mp3"></audio>
@@ -406,9 +406,9 @@
                 <div class="col-12 text-center">
                     <br>
 
-                    <h2 class="pb-4">CHOOSE <i class='uil uil-ticket color-yellow'></i> TICKET</h2>
+                    <h2 class="pb-4">CHOOSE <i class='uil uil-ticket' style="color: #63FFB5;"></i> TICKET</h2>
 
-                    <div class="progress-pie-chart" data-percent="59" onclick="alert('Hurry up and get your ticket!')">
+                   <!--  <div class="progress-pie-chart" data-percent="59" onclick="alert('Hurry up and get your ticket!')">
                         <div class="ppc-progress">
                             <div class="ppc-progress-fill"></div>
                         </div>
@@ -417,14 +417,14 @@
                                 <span>%</span>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <br>
 
                     <form action="{{ route('processTransaction') }}" id="form" onsubmit="play('audio2')">
                         @csrf
                         <div class="section">
-                            <input class="checkbox-ticket" type="radio" value="ticket-1" name="ticket" id="ticket-1">
-                            <label for="ticket-1" onclick="play('audio')" id="disable-ticket-1">
+                            <input class="checkbox-ticket" type="radio" value="ticket-1" name="ticket" id="ticket-1"> 
+                            <label for="ticket-1" onclick="play('audio')" id="disable-ticket-1" >
                                 <span class=" top-dots">
 
                                     <span class="section dots">
@@ -501,7 +501,7 @@
                             </label>
                             <!--
 						--><input class="checkbox-ticket" type="radio" value="ticket-2" name="ticket" id="ticket-2">
-                            <label for="ticket-2" onclick="play('audio')" id="disable-ticket-2">
+                            <label for="ticket-2" onclick="play('audio')" id="disable-ticket-2" style="display: none;">
                                 <span class=" top-dots">
                                     <span class="section dots">
                                         <span></span>
@@ -600,10 +600,9 @@
                                     </span>
                                 </span>
                                 <span class="duration">
-                                    Abendkasse
-                                </span>
+                                    REGULAR                                </span>
                                 <span class="price mt-2 pb-4 mb-3">
-                                    18<sup>€</sup>
+                                    20<sup>€</sup>
                                 </span>
                                 <span class="section dots">
                                     <span></span>
@@ -828,11 +827,13 @@
         document.getElementById("demo2").innerHTML =
             (days + 2) + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
-        document.getElementById("demo3").innerHTML = "Sa, 04.12.21";
+        document.getElementById("demo3").innerHTML = `Fr, 07.01.21 <br>
+                                                      Fr, 14.01.21`;
 
         // If the count down is finished, write some text
 
-        document.getElementById("demo").innerHTML = 'SOLD OUT';
+        document.getElementById("demo").innerHTML = `SOLD OUT <br>
+                                                     SOLD OUT`;
 
 
 
