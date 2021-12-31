@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::view('/', 'welcome')->name('home');
+Route::get('/', function () {
+    $link = Artisan::call('storage:link');
+    return view('welcome');
+})->name('home');
 
 // Route::get('home', function () {
 //     return view('welcome')->name('home');
@@ -29,8 +32,7 @@ Route::post('qrcode', [QRController::class, 'qrcode'])->name('qrcode');
 Route::get('/setup', function () {
     $link = Artisan::call('storage:link');
     $migrate = Artisan::call('migrate');
-    $auth = Artisan::call('ui vue --auth');
-    dd($link, $migrate, $auth);
+    dd($link, $migrate);
 });
 Route::view('list', 'list');
 Route::get('guests', [GuestController::class, 'index'])->name('guests')->middleware('auth');

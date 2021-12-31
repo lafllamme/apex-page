@@ -26,7 +26,7 @@ class PayPalController extends Controller
         } else if ($ticketId === 'ticket-2') {
             $amount = 15;
         } else if ($ticketId === 'ticket-3') {
-            $amount = 18;
+            $amount = 22;
         }
 
         $totalValue = round(($amount * 1.05), 2);

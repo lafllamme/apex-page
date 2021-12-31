@@ -5,11 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>NOCTA X</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     </link>
+    <meta name="description" content="BEST SECRET RAVES CGN">
+    <meta name="author" content="Verschluesseltes System">
+
+
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     </link>
     <!-- Styles -->
@@ -27,12 +31,12 @@
             --dark-blue: black;
             --white-gr: #c4c3ca;
             --yellow: #63FFB5;
-            --yellow-2: #efff63;
+            --yellow-2: #7de54e;
         }
 
         body {
             color: var(--white-gr);
-            background: var(--dark-blue);
+            background: url('https://i.pinimg.com/originals/b4/e3/71/b4e371619042d1e80918d09904e90f7d.gif');
             overflow-x: hidden;
 
 
@@ -41,7 +45,7 @@
         h2 {
             font-family: 'MyWebFont', sans-serif;
             font-weight: 700;
-            color: var(--white-gr);
+            color: white;
             font-size: 25px;
         }
 
@@ -450,7 +454,7 @@
                                 <span class="duration">
                                     Early Bird </span>
                                 <span class="price mt-2 pb-4 mb-3">
-                                    12<sup>€</sup>
+                                    14<sup>€</sup>
                                 </span>
                                 <span class="section dots">
                                     <span></span>
@@ -602,7 +606,7 @@
                                 <span class="duration">
                                     REGULAR                                </span>
                                 <span class="price mt-2 pb-4 mb-3">
-                                    20<sup>€</sup>
+                                    22<sup>€</sup>
                                 </span>
                                 <span class="section dots">
                                     <span></span>
@@ -766,6 +770,7 @@
     play = (domElement) => {
         var audio = document.getElementById(domElement);
         audio.play();
+        alert('Two for One Special!')
     }
 
     var domElement = document.getElementById('success');
