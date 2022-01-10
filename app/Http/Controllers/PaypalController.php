@@ -17,17 +17,12 @@ class PayPalController extends Controller
 
     public function processTransaction(Request $request)
     {
-        $ticketId = $request->ticket;
-        // $pic = file_get_contents('storage/APEX.png');
-        // dd($pic);
 
-        if ($ticketId === 'ticket-1') {
-            $amount = 12;
-        } else if ($ticketId === 'ticket-2') {
-            $amount = 15;
-        } else if ($ticketId === 'ticket-3') {
-            $amount = 22;
-        }
+        $ticketId = $request->ticket;
+
+        if ( $ticketId && $ticketId == 1) {
+            $amount = 25.99;
+        } 
 
         $totalValue = round(($amount * 1.05), 2);
         $provider = new PayPalClient;
@@ -70,6 +65,7 @@ class PayPalController extends Controller
                 ->with('error', $response['message'] ?? 'Something went wrong.');
         }
     }
+
     public function successTransaction(Request $request)
     {
         $provider = new PayPalClient;
@@ -107,9 +103,9 @@ class PayPalController extends Controller
         $shortString = [$qrData[0], $qrData[3]];
         $qrString = implode("|", $shortString);
         $qrcode = QrCode::size(500)
-            ->style('round')
+            ->style('dot')
+            ->eye('circle')
             //->gradient(131, 58, 180, 53, 159, 196, 'radial')
-            ->backgroundColor(138, 43, 226)
             ->errorCorrection('H')
             ->generate($qrString);
 
@@ -141,6 +137,7 @@ class PayPalController extends Controller
                 ->with('error', $response['message'] ?? 'Something went wrong.');
         }
     }
+
     public function cancelTransaction(Request $request)
     {
         return redirect()
