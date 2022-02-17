@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>NOCTA X</title>
+    <title>SECRET</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +30,7 @@
 
 
         body {
-            background: url('https://i.gifer.com/origin/55/5574f381e4e26df69e7f65feb662b302.gif');
+            background: url('https://media2.giphy.com/media/eDzhyEt8rHGUM/giphy.gif?cid=6c09b9526c60c272542c42c47c924f8072a3f0007675e23c&rid=giphy.gif&ct=g');
             overflow-x: hidden;
             font-family: 'MyWebFont';
 
@@ -58,11 +58,23 @@
 
         }
 
+        h1 {
+            font-size: 3rem;
+            background-color: #0093E9;
+            background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         h2,
         h3,
         h4,
         h5 {
-            color: white;
+            background-color: #21D4FD;
+            background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
         }
 
         h5 {
@@ -73,6 +85,11 @@
             margin-top: 40px;
             /* define margin as you see fit */
         }
+
+        button {
+            background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+
+        }
     </style>
 </head>
 <br>
@@ -81,13 +98,13 @@
 
     <div class="shake-opacity shake-constant">
         <div class="container">
-            <div class="row">
-                <div class="col"> <img src="https://i.imgur.com/yqlpd1I.png" style="color: grey;" class="img-fluid" alt="Responsive image">
-                </div>
-
+            <div class="justify-content-center">
+                <h1 class="text-center">Secret Rave</h1>
             </div>
         </div>
     </div>
+    </div>
+    <br>
 
     <h3 class="text-center">CHOOSE <i class="bi bi-ticket-perforated"></i> TICKET</h3>
 
@@ -105,9 +122,9 @@
 
             <input type="hidden" name="ticket" value="1">
 
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem; background: black;">
 
-                <img class="card-img-top" src="https://i.gifer.com/4zxP.gif" alt="Card image cap"></img>
+                <img class="card-img-top" src="https://media3.giphy.com/media/3oFzlUASnAYgzmujja/giphy.gif" alt="Card image cap"></img>
                 <br>
                 <h5 class="card-title text-center" style="color:black;">25,99<i class="bi bi-currency-euro"></i></h5>
 
@@ -116,7 +133,8 @@
                         <p class="card-text text-center">Secret Rave.</p>
                         <p class="card-text text-center">Hidden Location.</p>
                         <p class="card-text text-center">Indoor Spot.</p>
-                        <a id="redirect" class="btn btn-outline-dark">MORE INFOS</a>
+                        <a style="backgound-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+;" id="redirect" class="btn btn-outline-dark">MORE INFOS</a>
                     </div>
                 </div>
         </form>
@@ -209,6 +227,6 @@
     showNextQuote();
 
     document.getElementById("redirect").onclick = function() {
-        location.href = "https://www.instagram.com/apex.cologne/";
+        location.href = "https://t.me/ravecgn/";
     };
 </script>
