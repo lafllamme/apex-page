@@ -108,8 +108,14 @@
         #buttonContent {
             background-color: #3EECAC;
             background-image: linear-gradient(19deg, #3EECAC 0%, #EE74E1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: white;
+
+        }
+
+        #buttonContent:hover {
+            background-color: #52ACFF;
+            background-image: linear-gradient(180deg, #52ACFF 25%, #FFE32C 100%);
+            color: black;
 
         }
 
@@ -202,16 +208,16 @@
     </div>
 
 
-    <h5 class="text-center">Das ist dein Ticket!</h5>
+    <h5 class="text-center" id="buttonContent">Das ist dein Ticket!</h5>
 
     <div class="row spacer"></div>
     <div class="row justify-content-center">
-        <a href="<?php echo e(\Session::get('url')); ?>" class="btn btn-lg btn-dark" download>Download</a>
+        <a href="<?php echo e(\Session::get('url')); ?>" class="btn btn-lg btn-dark" id="buttonContent" download>Download</a>
     </div>
     <div class="row spacer"></div>
 
     <div class="row justify-content-center">
-        <div class="col"> <img src="<?php echo e(\Session::get('url')); ?>" class="img-fluid" alt="Responsive image"></div>
+        <img src="<?php echo e(\Session::get('url')); ?>" class="img-fluid" alt="Responsive image">
     </div>
 
 

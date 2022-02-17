@@ -7,6 +7,8 @@ use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Payment;
+use App\Models\Product;
+
 
 class PayPalController extends Controller
 {
@@ -20,9 +22,9 @@ class PayPalController extends Controller
 
         $ticketId = $request->ticket;
 
-        if ( $ticketId && $ticketId == 1) {
+        if ($ticketId && $ticketId == 1) {
             $amount = 15;
-        } 
+        }
 
         $totalValue = round(($amount * 1.05), 2);
         $provider = new PayPalClient;
@@ -95,6 +97,19 @@ class PayPalController extends Controller
         $personName = $cleanedArr[5] . ' ' . $cleanedArr[6];
         $email = $cleanedArr[2];
         $amount = $cleanedArr[23];
+
+        $msg = $cleanedArr[18];
+
+        $data = [
+            'firstname' => $cleanedArr[5],
+            'lastname' => $cleanedArr[6],
+            'email' => $email,
+            'price' => $cleanedArr[28],
+            'token' => $transactionCode,
+            'message' => $msg
+        ];
+
+        Product::create($data);
 
         $qrData = [
             $personName, $email, $amount, $transactionCode

@@ -6,6 +6,7 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\QRController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +27,11 @@ Route::get('/', function () {
 //     return view('welcome')->name('home');
 // });
 
+Route::get('/hidden', function () {
+    $products = Product::latest()->paginate(5);
+    return view('index', compact('products'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
+});
 
 //Route::get('index', [QRController::class, 'index'])->name('index');
 Route::post('qrcode', [QRController::class, 'qrcode'])->name('qrcode');
