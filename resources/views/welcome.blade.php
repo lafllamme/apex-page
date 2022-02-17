@@ -90,6 +90,40 @@
             background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
 
         }
+
+        button:hover {
+            background-color: #21D4FD;
+            background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+
+        }
+
+        #cardContent {
+            background-color: #08AEEA;
+            background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+        }
+
+        #buttonContent {
+            background-color: #3EECAC;
+            background-image: linear-gradient(19deg, #3EECAC 0%, #EE74E1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+        }
+
+        #redirect {
+            background-color: #FF9A8B;
+            background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #redirect:hover {
+            background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
+
+        }
     </style>
 </head>
 <br>
@@ -106,12 +140,15 @@
     </div>
     <br>
 
-    <h3 class="text-center">CHOOSE <i class="bi bi-ticket-perforated"></i> TICKET</h3>
+    <div class="shake-chunk shake-constant shake-constant--hover">
+        <h3 class="text-center">CHOOSE <i class="bi bi-ticket-perforated"></i> TICKET</h3>
+    </div>
+
 
     <div class="row spacer"></div>
 
     <div class="quotes">
-        <h5 class="text-center" style="white-space: nowrap;">ONLY 100 TICKETS LEFT</h5>
+        <h5 class="text-center" style="white-space: nowrap;">LIMITED CAPACITY</h5>
     </div>
 
 
@@ -130,11 +167,10 @@
 
                 <div class="card-body">
                     <div class="row justify-content-center">
-                        <p class="card-text text-center">Secret Rave.</p>
-                        <p class="card-text text-center">Hidden Location.</p>
-                        <p class="card-text text-center">Indoor Spot.</p>
-                        <a style="backgound-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-;" id="redirect" class="btn btn-outline-dark">MORE INFOS</a>
+                        <p id="cardContent" class="card-text text-center">Secret Rave.</p>
+                        <p id="cardContent" class="card-text text-center">Hidden Location.</p>
+                        <p id="cardContent" class="card-text text-center">Indoor Spot.</p>
+                        <a id="redirect" class="btn btn-outline-dark">MORE INFOS</a>
                     </div>
                 </div>
         </form>
