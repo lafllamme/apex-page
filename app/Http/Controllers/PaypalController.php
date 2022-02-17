@@ -21,7 +21,7 @@ class PayPalController extends Controller
         $ticketId = $request->ticket;
 
         if ( $ticketId && $ticketId == 1) {
-            $amount = 25.99;
+            $amount = 15;
         } 
 
         $totalValue = round(($amount * 1.05), 2);

@@ -126,7 +126,7 @@
 
                 <img class="card-img-top" src="https://media3.giphy.com/media/3oFzlUASnAYgzmujja/giphy.gif" alt="Card image cap"></img>
                 <br>
-                <h5 class="card-title text-center" style="color:black;">25,99<i class="bi bi-currency-euro"></i></h5>
+                <h5 class="card-title text-center" style="color:black;">15<i class="bi bi-currency-euro"></i></h5>
 
                 <div class="card-body">
                     <div class="row justify-content-center">
