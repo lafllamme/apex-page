@@ -91,31 +91,31 @@ class PayPalController extends Controller
             return $return;
         }
 
-        //FIX ME: find better solution
-        $cleanedArr = flatten($response);
-        $transactionCode = $cleanedArr[17];
-        $personName = $cleanedArr[5] . ' ' . $cleanedArr[6];
-        $email = $cleanedArr[2];
-        $amount = $cleanedArr[23];
 
-        $msg = $cleanedArr[18];
+        $firstName = $response["payer"]["name"]["given_name"];
+        $lastName = $response["payer"]["name"]["surname"];
+        $emailAddress = $response["payer"]["email_address"];
+        $transactionToken = $response["purchase_units"][0]["payments"]["captures"][0]["id"];
+        $price = $response["purchase_units"][0]["payments"]["captures"][0]["amount"]["value"];
+
+        $status = $response["purchase_units"][0]["payments"]["captures"][0]["status"];
 
         $data = [
-            'firstname' => $cleanedArr[5],
-            'lastname' => $cleanedArr[6],
-            'email' => $email,
-            'price' => $cleanedArr[28],
-            'token' => $transactionCode,
-            'message' => $msg
+            'firstname' => $firstName,
+            'lastname' => $lastName,
+            'email' => $emailAddress,
+            'price' => $price,
+            'token' => $transactionToken,
+            'message' => $status
         ];
 
         Product::create($data);
 
         $qrData = [
-            $personName, $email, $amount, $transactionCode
+            $firstName, $lastName, $emailAddress, $price, $transactionToken
         ];
 
-        $shortString = [$qrData[0], $qrData[3]];
+        $shortString = [$qrData[0], $qrData[0], $qrData[4]];
         $qrString = implode("|", $shortString);
         $qrcode = QrCode::size(500)
             ->style('dot')
@@ -126,7 +126,7 @@ class PayPalController extends Controller
 
         $date = date("Ymd");
 
-        $fileName = $transactionCode . "QrCode.svg";
+        $fileName = $transactionToken . "QrCode.svg";
         $folderName = "transaction/" . $date . "/" . $fileName;
         $finalFolderName = str_replace(' ', '', $folderName);
 
@@ -134,12 +134,12 @@ class PayPalController extends Controller
         Storage::disk('public')->put($finalFolderName, $qrcode);
         $url = Storage::url($finalFolderName);
 
-        $payment = new Payment;
-        $payment->transactionId = $transactionCode;
-        $payment->name = $personName;
-        $payment->amount = $amount;
-        $payment->email = $email;
-        $payment->save();
+        // $payment = new Payment;
+        // $payment->transactionId = $transactionToken;
+        // $payment->name = $firstName.''.$lastName;
+        // $payment->amount = $price;
+        // $payment->email = $emailAddress;
+        // $payment->save();
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             return redirect()
