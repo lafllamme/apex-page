@@ -115,7 +115,7 @@ class PayPalController extends Controller
             $firstName, $lastName, $emailAddress, $price, $transactionToken
         ];
 
-        $shortString = [$qrData[0], $qrData[0], $qrData[4]];
+        $shortString = [$qrData[0], $qrData[1], $qrData[4]];
         $qrString = implode("|", $shortString);
         $qrcode = QrCode::size(500)
             ->style('dot')
